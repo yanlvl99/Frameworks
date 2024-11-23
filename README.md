@@ -7,7 +7,7 @@ Uma biblioteca utilitária privada para Roblox com funções para manipulação 
 ## 📥 Instalação
 
 ```lua
-local Framework = loadstring(game:HttpGet("SEU_LINK_AQUI"))()
+local Framework = loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
 local framework = Framework.new()
 ```
 
@@ -98,17 +98,17 @@ Gerencia ferramentas no inventário.
 
 ```lua
 -- Equipar ferramenta
-framework:EquipTool("Espada") -- Retorna boolean
+framework:EquipTool("Espada") -- Retorna funçao 
 
 -- Desequipar ferramenta
-framework:UnequipTool("Espada") -- Retorna boolean
+framework:UnequipTool("Espada") -- Retorna funçao
 ```
 
 ### Rejoin
 Reconecta o jogador ao servidor.
 
 ```lua
-framework:Rejoin() -- Retorna boolean
+framework:Rejoin() -- Retorna funçao de relogar
 ```
 
 ### CreateWindow
