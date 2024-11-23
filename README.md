@@ -22,7 +22,7 @@ function Framework:Printar(texto)
     print("Texto")
 end
 
--- Utilizando função ja existente para fazer uma nova
+-- Criando função nova e utilizando função já criada
 function Framework:PrintarNumeroFormatado(numero)
     print(self:FormatNumber(numero))
 end
