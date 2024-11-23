@@ -39,7 +39,7 @@ Adiciona cor ao texto usando tags HTML.
 
 ```lua
 local coloredText = framework:TextColor("Olá Mundo", "rgb(255,0,0)")
--- Resultado: <font color="rgb(255,0,0)">Olá Mundo</font>
+--[[Resultado:]] <font color="rgb(255,0,0)">Olá Mundo</font>
 ```
 
 ### FormatNumber
