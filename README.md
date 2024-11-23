@@ -13,6 +13,21 @@ local Framework = Framework.new()
 
 ## 🚀 Funcionalidades
 
+### Flexibilidade e Facilidade
+Você pode facilmente adicionar mais funções ao Framework, e tambem utilizar funções ja existentes nessa função 
+
+```lua
+-- Criando nova função 
+function Framework:Printar(texto)
+    print("Texto")
+end
+
+-- Utilizando função ja existente para fazer uma nova
+function Framework:PrintarNumeroFormatado(numero)
+    print(self:FormatNumber(numero))
+end
+```
+
 ### Position
 Obtém a posição Vector3 de diferentes tipos de objetos.
 
