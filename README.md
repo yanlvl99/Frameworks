@@ -7,7 +7,7 @@ Uma biblioteca utilitária privada para Roblox com funções para manipulação 
 ## 📥 Instalação
 
 ```lua
-local Framework = loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
 local framework = Framework.new()
 ```
 
