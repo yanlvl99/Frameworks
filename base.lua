@@ -1,24 +1,20 @@
--- Definindo as tabelas e suas metatables
-Format = {}
-State = {}
-Tool = {}
-Roblox = {}
-Gui = {}
-LibraryManager = {}
+-- Definindo a tabela principal e sua metatable
+Framework = {}
+Framework.__index = Framework
 
-Format.__index = Format
-State.__index = State
-Tool.__index = Tool
-LibraryManager.__index = LibraryManager
-Roblox.__index = Roblox
-Gui.__index = Gui
+-- Tipagem para as funções
+type PositionArg = Instance | Vector3 | CFrame | Model
+type Currency = {amount: number, symbol: string, color: string}
+type PriceOptions = {currencies: {Currency}, separator: string}
 
-function pcallCheck(func)
+-- Função para verificar pcall
+local function pcallCheck(func: () -> any): boolean
     local success, err = pcall(func)
     return success
 end
 
-function Format:Position(arg)
+-- Funções da tabela Framework
+function Framework:Position(arg: PositionArg): Vector3
     if typeof(arg) == "Instance" and arg:IsA("BasePart") then
         return arg.Position
     elseif typeof(arg) == "Vector3" or typeof(arg) == "CFrame" then
@@ -29,11 +25,11 @@ function Format:Position(arg)
     return Vector3.new(0, 0, 0)
 end
 
-function Format:TextColor(t, c)
+function Framework:TextColor(t: string, c: string): string
     return string.format("<font color=\"%s\">%s</font>", c, tostring(t))
 end
 
-function Format:FormatNumber(n, suffixes)
+function Framework:FormatNumber(n: number, suffixes: {string}?): string
     suffixes = suffixes or {"K", "M", "B", "T"}
     local number = math.abs(n)
     for i, suffix in ipairs(suffixes) do
@@ -46,7 +42,7 @@ function Format:FormatNumber(n, suffixes)
     return tostring(math.floor(number))
 end
 
-function Format:Price(options)
+function Framework:Price(options: PriceOptions): string
     local result = ""
     local currencies = options.currencies or {}
     local separator = options.separator or " e "
@@ -68,35 +64,24 @@ function Format:Price(options)
     return result
 end
 
--- Exemplo de uso:
-local priceOptions = {
-    currencies = {
-        {amount = 1000, symbol = "$", color = "rgb(0,255,0)"},
-        {amount = 500, symbol = " Frags", color = "rgb(128,0,128)"},
-        {amount = 300, symbol = " Gems", color = "rgb(0,0,255)"}
-    },
-    separator = " e "
-}
-
-function Get:Distance(a, b)
-    return (Format:Position(a) - Format:Position(b)).Magnitude
+function Framework:Distance(a: PositionArg, b: PositionArg): number
+    return (self:Position(a) - self:Position(b)).Magnitude
 end
 
-function State:Humanoid(s)
+function Framework:Humanoid(s: string): boolean
     local character = Player.Character
     local humanoid = character and character:FindFirstChildOfClass("Humanoid")
     return humanoid and humanoid:GetState() == Enum.HumanoidStateType[s] or false
 end
 
-function State:NetworkOwner(a)
+function Framework:NetworkOwner(a: Instance): boolean
     if not a:IsA("BasePart") then return false end
     local character = Player.Character
     local hrp = character and character:FindFirstChild("HumanoidRootPart")
     return (hrp and self:Distance(hrp, a) <= 350) or false
 end
 
--- Funções da tabela Tool
-function Tool:Equip(t)
+function Framework:EquipTool(t: string): boolean
     return pcallCheck(function()
         local tool = Player.Backpack:FindFirstChild(t)
         local character = Player.Character
@@ -107,7 +92,7 @@ function Tool:Equip(t)
     end)
 end
 
-function Tool:Unequip(t)
+function Framework:UnequipTool(t: string): boolean
     return pcallCheck(function()
         local character = Player.Character
         local tool = character and character:FindFirstChild(t)
@@ -117,31 +102,27 @@ function Tool:Unequip(t)
     end)
 end
 
--- Função da tabela Roblox
-function Roblox:Rejoin()
+function Framework:Rejoin(): boolean
     return pcallCheck(function()
         TeleportService:Teleport(game.PlaceId, Player)
     end)
 end
 
-function LibraryManager.new()
-    local self = setmetatable({}, LibraryManager)
-    self.Library = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-    return self
-end
-
-function LibraryManager:CreateWindow(gameName,keyBind)
+function Framework:CreateWindow(gameName: string?, keyBind: Enum.KeyCode?): Instance
     local window = self.Library:CreateWindow({
-      Title = "Yan's Hub",
-      SubTitle = gameName or "",
-      TabWidth = 112,
-      Size = UDim2.fromOffset(406, 322),
-      Theme = "Darker",
-      MinimizeKey = keyBind or Enum.KeyCode.LeftAlt
+        Title = "Yan's Hub",
+        SubTitle = gameName or "",
+        TabWidth = 112,
+        Size = UDim2.fromOffset(406, 322),
+        Theme = "Darker",
+        MinimizeKey = keyBind or Enum.KeyCode.LeftAlt
     })
     self.Library:ToggleTransparency(false)
     return window
 end
 
-library = LibraryManager.new()
-
+function Framework.new(): Framework
+    local self = setmetatable({}, Framework)
+    self.Library = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+    return self
+end
