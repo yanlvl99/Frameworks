@@ -53,7 +53,7 @@ local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
 Adiciona cor ao texto.
 
 ```lua
-local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)")
+local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)") -- Retorn o texto colorido
 ```
 
 ### FormatNumber
@@ -78,8 +78,7 @@ local preco = Framework:Price({
         {amount = 750, symbol = "💎", color = "rgb(0,191,255)"}
     },
     separator = " + "
-})
--- Resultado: <font color="rgb(255,215,0)">$1.5K</font> + <font color="rgb(0,191,255)">💎750</font>
+}) -- Retorn o texto formatado e com as cores
 ```
 
 ### Distance
