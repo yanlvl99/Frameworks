@@ -19,7 +19,7 @@ Você pode facilmente adicionar mais funções ao Framework, e tambem utilizar f
 ```lua
 -- Criando nova função 
 function Framework:Printar(texto)
-    print("Texto")
+    print(texto)
 end
 
 -- Criando função nova e utilizando função já criada
