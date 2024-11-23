@@ -1,6 +1,8 @@
 # Yan's Framework v0.1
 
-Uma biblioteca utilitária para Roblox com funções para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas e muito mais.
+Uma biblioteca utilitária privada para Roblox com funções para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas e muito mais.
+
+⚠️ **AVISO: Este é um framework privado de uso restrito. Distribuição e uso não autorizado são estritamente proibidos.**
 
 ## 📥 Instalação
 
@@ -116,10 +118,16 @@ Cria uma janela de interface usando a biblioteca Fluent.
 local window = framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
 ```
 
-## 🤝 Contribuindo
+## ⚖️ Propriedade e Direitos Autorais
 
-Sinta-se à vontade para abrir issues e pull requests para melhorar este framework!
+Copyright © 2024 Yan. Todos os direitos reservados.
 
-## 📝 Licença
+**AVISO DE USO RESTRITO**
+- Este framework é propriedade exclusiva de Yan
+- Uso e distribuição são permitidos apenas mediante autorização expressa do proprietário
+- A cópia, modificação ou distribuição não autorizada é estritamente proibida
+- O acesso ao código fonte não implica em direito de uso ou distribuição
 
-[MIT License](https://opensource.org/licenses/MIT)
+Desenvolvido com amor e carinho por Yan
+
+Para solicitar acesso ou tirar dúvidas, entre em contato com o proprietário.
