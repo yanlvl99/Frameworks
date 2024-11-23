@@ -35,11 +35,10 @@ local position = framework:Position(model) -- Retorna Vector3 do PrimaryPart
 ```
 
 ### TextColor
-Adiciona cor ao texto usando tags HTML.
+Adiciona cor ao texto.
 
 ```lua
 local coloredText = framework:TextColor("Olá Mundo", "rgb(255,0,0)")
---[[Resultado:]] <font color="rgb(255,0,0)">Olá Mundo</font>
 ```
 
 ### FormatNumber
