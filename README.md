@@ -8,7 +8,7 @@ Uma biblioteca utilitária privada para Roblox com funções para manipulação 
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
-local framework = Framework.new()
+local Framework = Framework.new()
 ```
 
 ## 🚀 Funcionalidades
@@ -19,45 +19,45 @@ Obtém a posição Vector3 de diferentes tipos de objetos.
 ```lua
 -- Com BasePart
 local part = workspace.Part
-local position = framework:Position(part) -- Retorna Vector3
+local position = Framework:Position(part) -- Retorna Vector3
 
 -- Com Vector3
 local vec = Vector3.new(0, 10, 0)
-local position = framework:Position(vec) -- Retorna Vector3
+local position = Framework:Position(vec) -- Retorna Vector3
 
 -- Com CFrame
 local cf = CFrame.new(0, 10, 0)
-local position = framework:Position(cf) -- Retorna Vector3
+local position = Framework:Position(cf) -- Retorna Vector3
 
 -- Com Model
 local model = workspace.Model
-local position = framework:Position(model) -- Retorna Vector3 do PrimaryPart
+local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
 ```
 
 ### TextColor
 Adiciona cor ao texto.
 
 ```lua
-local coloredText = framework:TextColor("Olá Mundo", "rgb(255,0,0)")
+local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)")
 ```
 
 ### FormatNumber
 Formata números grandes com sufixos.
 
 ```lua
-local formatted = framework:FormatNumber(1500) -- Resultado: "1.5K"
-local formatted = framework:FormatNumber(1500000) -- Resultado: "1.5M"
+local formatted = Framework:FormatNumber(1500) -- Resultado: "1.5K"
+local formatted = Framework:FormatNumber(1500000) -- Resultado: "1.5M"
 
 -- Com sufixos personalizados
 local sufixos = {"Mil", "Mi", "Bi", "Tri"}
-local formatted = framework:FormatNumber(1500, sufixos) -- Resultado: "1.5Mil"
+local formatted = Framework:FormatNumber(1500, sufixos) -- Resultado: "1.5Mil"
 ```
 
 ### Price
 Formata preços com múltiplas moedas.
 
 ```lua
-local preco = framework:Price({
+local preco = Framework:Price({
     currencies = {
         {amount = 1500, symbol = "$", color = "rgb(255,215,0)"},
         {amount = 750, symbol = "💎", color = "rgb(0,191,255)"}
@@ -73,15 +73,15 @@ Calcula a distância entre duas posições.
 ```lua
 local part1 = workspace.Part1
 local part2 = workspace.Part2
-local distancia = framework:Distance(part1, part2) -- Retorna número
+local distancia = Framework:Distance(part1, part2) -- Retorna número
 ```
 
 ### Humanoid
 Verifica o estado do Humanoid do jogador.
 
 ```lua
-local estaAndando = framework:Humanoid("Walking") -- Retorna boolean
-local estaPulando = framework:Humanoid("Jumping") -- Retorna boolean
+local estaAndando = Framework:Humanoid("Walking") -- Retorna boolean
+local estaPulando = Framework:Humanoid("Jumping") -- Retorna boolean
 ```
 
 ### NetworkOwner
@@ -89,7 +89,7 @@ Verifica se um objeto está dentro do alcance de network do jogador.
 
 ```lua
 local part = workspace.Part
-local temControle = framework:NetworkOwner(part) -- Retorna boolean
+local temControle = Framework:NetworkOwner(part) -- Retorna boolean
 ```
 
 ### EquipTool e UnequipTool
@@ -97,24 +97,24 @@ Gerencia ferramentas no inventário.
 
 ```lua
 -- Equipar ferramenta
-framework:EquipTool("Espada") -- Retorna funçao 
+Framework:EquipTool("Espada") -- Retorna funçao 
 
 -- Desequipar ferramenta
-framework:UnequipTool("Espada") -- Retorna funçao
+Framework:UnequipTool("Espada") -- Retorna funçao
 ```
 
 ### Rejoin
 Reconecta o jogador ao servidor.
 
 ```lua
-framework:Rejoin() -- Retorna funçao de relogar
+Framework:Rejoin() -- Retorna funçao de relogar
 ```
 
 ### CreateWindow
 Cria uma janela de interface usando a biblioteca Fluent.
 
 ```lua
-local window = framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
+local window = Framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
 ```
 
 ## ⚖️ Propriedade e Direitos Autorais
