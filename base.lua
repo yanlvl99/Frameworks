@@ -1,19 +1,16 @@
--- Definindo a tabela principal e sua metatable
 Framework = {}
 Framework.__index = Framework
+Framework.Version = "v0.1"
 
--- Tipagem para as funções
 type PositionArg = Instance | Vector3 | CFrame | Model
 type Currency = {amount: number, symbol: string, color: string}
 type PriceOptions = {currencies: {Currency}, separator: string}
 
--- Função para verificar pcall
 local function pcallCheck(func: () -> any): boolean
     local success, err = pcall(func)
     return success
 end
 
--- Funções da tabela Framework
 function Framework:Position(arg: PositionArg): Vector3
     if typeof(arg) == "Instance" and arg:IsA("BasePart") then
         return arg.Position
