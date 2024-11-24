@@ -73,7 +73,7 @@ item2.Name = "Mundo"
 local item3 = Instance.new("Part", exampleFolder)
 item3.Name = "Lua"
 
-local parents = {workspace, game.Players.LocalPlayer}
+local parents = {exampleFolder, game.Players.LocalPlayer,workspace}
 
 -- Caso 1: Verificar se algum item contém as palavras-chave "Olá" ou "3"
 local result = Framework:FindMatchingItems(parents, false, "Olá", "3")
