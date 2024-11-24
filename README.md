@@ -51,53 +51,6 @@ local position = Framework:Position(part) -- Retorna Vector3 (posição da peça
 - Retorna uma posição padrão `(0, 0, 0)` para entradas inválidas.
 
 ---
-
-### SimulateKeyPress  
-Simula o pressionamento de uma tecla.  
-
-```lua
-Framework:SimulateKeyPress(Enum.KeyCode.E, 0.2)  
--- Simula o pressionamento da tecla "E" por 0.2 segundos.  
-```
-
-### SimulateMouseClick  
-Simula um clique do mouse.  
-
-```lua
-Framework:SimulateMouseClick("Left")  
--- Simula um clique com o botão esquerdo do mouse.
-
-Framework:SimulateMouseClick("Right")  
--- Simula um clique com o botão direito do mouse.  
-```
-
-### SimulateMouseScroll  
-Simula o movimento de rolagem do mouse.  
-
-```lua
-Framework:SimulateMouseScroll("Up", 3)  
--- Simula três movimentos de rolagem para cima.
-
-Framework:SimulateMouseScroll("Down", 2)  
--- Simula dois movimentos de rolagem para baixo.  
-```  
-
-### **Teleporte Avançado**
-Teleporte para alvos com suporte a `Tweening` e configuração de velocidade. 
-
-```lua
--- Configuração com Tweening ativado
-local config = {
-    targetPos = workspace.Part, -- Destino do teleporte
-    RootPart = Player.Character.HumanoidRootPart, -- Parte principal do jogador
-    Tween = true, -- Suaviza o movimento
-    Speed = 200, -- Velocidade de movimentação
-    NeedHumanoid = true -- Verifica se o humanoide está vivo
-}
-
-Framework:Teleport(config)
-```
-
 **Características**:
 - Suporta teleporte direto ou com animação.
 - Configurável para verificar a saúde do humanoide e ajustar velocidades.
@@ -168,6 +121,74 @@ Framework:Rejoin()
 ```
 
 ---
+
+### **SimulateKeyPress**  
+**Descrição**: Simula o pressionamento de uma tecla por um tempo especificado.  
+
+**Sintaxe**:  
+```lua
+Framework:SimulateKeyPress(keyCode: Enum.KeyCode, duration: number)
+```  
+
+**Parâmetros**:  
+- `keyCode` (obrigatório): A tecla que será simulada. Deve ser um valor de `Enum.KeyCode`.  
+- `duration` (opcional): A duração do pressionamento em segundos. O padrão é `0.1`.  
+
+**Exemplo**:  
+```lua
+Framework:SimulateKeyPress(Enum.KeyCode.E)  
+-- Simula o pressionamento da tecla "E" por 0.1 segundos.
+
+Framework:SimulateKeyPress(Enum.KeyCode.Space, 0.5)  
+-- Simula o pressionamento da tecla "Space" por 0.5 segundos.
+```
+
+---
+
+### **SimulateMouseClick**  
+**Descrição**: Simula um clique do mouse em um botão específico.  
+
+**Sintaxe**:  
+```lua
+Framework:SimulateMouseClick(button: string)
+```  
+
+**Parâmetros**:  
+- `button` (opcional): O botão do mouse a ser clicado. Pode ser `"Left"` para botão esquerdo ou `"Right"` para botão direito. O padrão é `"Left"`.  
+
+**Exemplo**:  
+```lua
+Framework:SimulateMouseClick()  
+-- Simula um clique com o botão esquerdo do mouse.
+
+Framework:SimulateMouseClick("Right")  
+-- Simula um clique com o botão direito do mouse.
+```
+
+---
+
+### **SimulateMouseScroll**  
+**Descrição**: Simula o movimento de rolagem do mouse em uma direção especificada e uma quantidade de passos.  
+
+**Sintaxe**:  
+```lua
+Framework:SimulateMouseScroll(direction: string, steps: number)
+```  
+
+**Parâmetros**:  
+- `direction` (opcional): A direção da rolagem. Pode ser `"Up"` (para cima) ou `"Down"` (para baixo). O padrão é `"Up"`.  
+- `steps` (opcional): O número de passos de rolagem. O padrão é `1`.  
+
+**Exemplo**:  
+```lua
+Framework:SimulateMouseScroll()  
+-- Simula uma rolagem para cima com um passo.
+
+Framework:SimulateMouseScroll("Down", 3)  
+-- Simula três passos de rolagem para baixo.
+```  
+
+--- 
 
 ### **Criação de Interface com Fluent**
 Crie uma janela de interface customizada de forma rápida.
