@@ -170,15 +170,6 @@ Framework:SimulateMouseScroll("Down", 3)
 -- Simula três passos de rolagem para baixo.
 ```  
 
---- 
-
-### **Criação de Interface com Fluent**
-Crie uma janela de interface customizada de forma rápida.
-
-```lua
-local window = Framework:CreateWindow("Título", Enum.KeyCode.LeftAlt)
-```
-
 ---
 
 ## ⚖️ **Propriedade e Direitos Autorais**
