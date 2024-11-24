@@ -12,6 +12,7 @@ Uma biblioteca utilitária privada para Roblox, projetada para facilitar o desen
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
 local Framework = Framework.new()
+```
 
 
 ---
@@ -22,6 +23,7 @@ Flexibilidade e Expansibilidade
 
 Adicione facilmente novas funcionalidades ao framework ou reutilize as existentes.
 
+```lua
 -- Criando uma nova função
 function Framework:Printar(texto)
     print(texto)
@@ -31,11 +33,14 @@ end
 function Framework:PrintarNumeroFormatado(numero)
     print(self:FormatNumber(numero))
 end
+```
+
 
 📍 Position
 
 Obtenha a posição de diferentes tipos de objetos no formato Vector3.
 
+```lua
 local part = workspace.Part
 local position = Framework:Position(part) -- Retorna Vector3
 
@@ -47,11 +52,14 @@ local position = Framework:Position(cf) -- Retorna Vector3
 
 local model = workspace.Model
 local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
+```
+
 
 🎨 TextColor
 
 Adicione cor ao texto.
 
+```lua
 local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)")
 
 🔢 FormatNumber
@@ -64,11 +72,14 @@ local formatted = Framework:FormatNumber(1500000)    -- Resultado: "1.5M"
 -- Com sufixos personalizados
 local sufixos = {"Mil", "Mi", "Bi", "Tri"}
 local formatted = Framework:FormatNumber(1500, sufixos) -- Resultado: "1.5Mil"
+```
+
 
 💲 Price
 
 Formate preços com múltiplas moedas e cores.
 
+```lua
 local preco = Framework:Price({
     currencies = {
         {amount = 1500, symbol = "$", color = "rgb(255,215,0)"},
@@ -76,47 +87,65 @@ local preco = Framework:Price({
     },
     separator = " + "
 })
+```
+
 
 📏 Distance
 
 Calcule a distância entre dois objetos ou posições.
 
+```lua
 local part1 = workspace.Part1
 local part2 = workspace.Part2
 local distancia = Framework:Distance(part1, part2)
+```
+
 
 🤖 Humanoid
 
 Verifique o estado do Humanoid do jogador.
 
+```lua
 local estaAndando = Framework:Humanoid("Walking") -- Retorna boolean
 local estaPulando = Framework:Humanoid("Jumping") -- Retorna boolean
+```
 
 🌐 NetworkOwner
 
 Cheque se um objeto está sob controle de rede do jogador.
 
+```lua
 local part = workspace.Part
 local temControle = Framework:NetworkOwner(part) -- Retorna boolean
+```
+
 
 ⚔️ EquipTool e UnequipTool
 
 Gerencie ferramentas no inventário.
 
+```lua
 Framework:EquipTool("Espada")   -- Equipa a ferramenta
 Framework:UnequipTool("Espada") -- Desequipa a ferramenta
+```
 
 🔄 Rejoin
 
 Reconecte-se ao servidor atual.
 
+```lua
 Framework:Rejoin()
+```
+
 
 🖼️ CreateWindow
 
 Crie uma janela de interface utilizando a biblioteca Fluent.
 
+```lua
 local window = Framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
+
+```
 
 
 ---
