@@ -49,6 +49,36 @@ local model = workspace.Model
 local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
 ```
 
+
+### Teleport
+Teleporta o jogador para uma posição alvo, que pode ser um Model, Part, CFrame ou Position. A função formata automaticamente a posição para CFrame.
+```lua
+-- Exemplo de uso com Tween:
+local config = {
+    targetPos = workspace.Part, -- Posição alvo (pode ser Model, Part, CFrame ou Position)
+    RootPart = Player.Character.HumanoidRootPart, -- Parte raiz do jogador
+    Tween = true, -- Usar Tweening
+    MaxSpeed = 300, -- Velocidade máxima
+    MinSpeed = 1, -- Velocidade mínima
+    Speed = 250, -- Velocidade de Tweening
+    BypassDistance = 100, -- Distância para ignorar Tweening
+    NeedHumanoid = true, -- Verificar saúde do Humanoid
+    HasBodyVelocity = true -- Adicionar BodyVelocity
+}
+
+Framework:Teleport(config)
+
+-- Exemplo de uso sem Tween:
+local config = {
+    targetPos = Vector3.new(0, 10, 0), -- Posição alvo (pode ser Model, Part, CFrame ou Position)
+    RootPart = Player.Character.HumanoidRootPart, -- Parte raiz do jogador
+    Tween = false -- Não usar Tweening
+}
+
+Framework:Teleport(config)
+
+```
+
 ### TextColor
 Adiciona cor ao texto.
 
