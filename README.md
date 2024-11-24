@@ -52,6 +52,36 @@ local position = Framework:Position(part) -- Retorna Vector3 (posição da peça
 
 ---
 
+### SimulateKeyPress  
+Simula o pressionamento de uma tecla.  
+
+```lua
+Framework:SimulateKeyPress(Enum.KeyCode.E, 0.2)  
+-- Simula o pressionamento da tecla "E" por 0.2 segundos.  
+```
+
+### SimulateMouseClick  
+Simula um clique do mouse.  
+
+```lua
+Framework:SimulateMouseClick("Left")  
+-- Simula um clique com o botão esquerdo do mouse.
+
+Framework:SimulateMouseClick("Right")  
+-- Simula um clique com o botão direito do mouse.  
+```
+
+### SimulateMouseScroll  
+Simula o movimento de rolagem do mouse.  
+
+```lua
+Framework:SimulateMouseScroll("Up", 3)  
+-- Simula três movimentos de rolagem para cima.
+
+Framework:SimulateMouseScroll("Down", 2)  
+-- Simula dois movimentos de rolagem para baixo.  
+```  
+
 ### **Teleporte Avançado**
 Teleporte para alvos com suporte a `Tweening` e configuração de velocidade. 
 
