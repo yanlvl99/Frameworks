@@ -56,6 +56,47 @@ Adiciona cor ao texto.
 local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)") -- Retorn o texto colorido
 ```
 
+### FindMatchingItems
+Procura itens que correspondem às palavras-chave fornecidas.
+
+```lua
+-- Suponha que temos alguns objetos no workspace e no Player
+local exampleFolder = Instance.new("Folder", workspace)
+exampleFolder.Name = "ExampleFolder"
+
+local item1 = Instance.new("Part", exampleFolder)
+item1.Name = "Olá"
+
+local item2 = Instance.new("Part", exampleFolder)
+item2.Name = "Mundo"
+
+local item3 = Instance.new("Part", exampleFolder)
+item3.Name = "Lua"
+
+local parents = {workspace, game.Players.LocalPlayer}
+
+-- Caso 1: Verificar se algum item contém as palavras-chave "Olá" ou "3"
+local result = Framework:FindMatchingItems(parents, false, "Olá", "3")
+print(result)  -- Isso imprimirá true, pois "Olá" está na tabela
+
+-- Caso 2: Retornar os itens que contêm as palavras-chave "Olá" ou "3"
+local foundItems = Framework:FindMatchingItems(parents, true, "Olá", "3")
+for _, item in ipairs(foundItems) do
+    print(item.Name)  -- Isso imprimirá "Olá"
+end
+
+-- Caso 3: Verificar se algum item contém a palavra-chave "Lua"
+local result2 = Framework:FindMatchingItems(parents, false, "Lua")
+print(result2)  -- Isso imprimirá true, pois "Lua" está na tabela
+
+-- Caso 4: Retornar os itens que contêm a palavra-chave "Lua"
+local foundItems2 = Framework:FindMatchingItems(parents, true, "Lua")
+for _, item in ipairs(foundItems2) do
+    print(item.Name)  -- Isso imprimirá "Lua"
+end
+```
+
+
 ### FormatNumber
 Formata números grandes com sufixos.
 
