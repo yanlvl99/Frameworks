@@ -1,146 +1,142 @@
-# Yan's Framework v0.1
+---
 
-Uma biblioteca utilitária privada para Roblox com funções para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas e muito mais.
+Yan's Framework v0.1
 
-⚠️ **AVISO: Este é um framework privado de uso restrito. Distribuição e uso não autorizado são estritamente proibidos.**
+Uma biblioteca utilitária privada para Roblox, projetada para facilitar o desenvolvimento de jogos com funções para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas, e muito mais.
 
-## 📥 Instalação
+⚠️ AVISO: Este é um framework privado de uso restrito. Distribuição ou uso não autorizado são terminantemente proibidos.
 
-```lua
+
+---
+
+📥 Instalação
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
 local Framework = Framework.new()
-```
 
-## 🚀 Funcionalidades
 
-### Flexibilidade e Facilidade
-Você pode facilmente adicionar mais funções ao Framework, e tambem utilizar funções ja existentes nessa função 
+---
 
-```lua
--- Criando nova função 
+🚀 Funcionalidades
+
+Flexibilidade e Expansibilidade
+
+Adicione facilmente novas funcionalidades ao framework ou reutilize as existentes.
+
+-- Criando uma nova função
 function Framework:Printar(texto)
     print(texto)
 end
 
--- Criando função nova e utilizando função já existente
+-- Criando uma nova função utilizando outra função do Framework
 function Framework:PrintarNumeroFormatado(numero)
     print(self:FormatNumber(numero))
 end
-```
 
-### Position
-Obtém a posição Vector3 de diferentes tipos de objetos.
+📍 Position
 
-```lua
--- Com BasePart
+Obtenha a posição de diferentes tipos de objetos no formato Vector3.
+
 local part = workspace.Part
 local position = Framework:Position(part) -- Retorna Vector3
 
--- Com Vector3
 local vec = Vector3.new(0, 10, 0)
 local position = Framework:Position(vec) -- Retorna Vector3
 
--- Com CFrame
 local cf = CFrame.new(0, 10, 0)
 local position = Framework:Position(cf) -- Retorna Vector3
 
--- Com Model
 local model = workspace.Model
 local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
-```
 
-### TextColor
-Adiciona cor ao texto.
+🎨 TextColor
 
-```lua
-local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)") -- Retorn o texto colorido
-```
+Adicione cor ao texto.
 
-### FormatNumber
-Formata números grandes com sufixos.
+local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)")
 
-```lua
-local formatted = Framework:FormatNumber(1500) -- Resultado: "1.5K"
-local formatted = Framework:FormatNumber(1500000) -- Resultado: "1.5M"
+🔢 FormatNumber
+
+Formate números grandes com sufixos.
+
+local formatted = Framework:FormatNumber(1500)       -- Resultado: "1.5K"
+local formatted = Framework:FormatNumber(1500000)    -- Resultado: "1.5M"
 
 -- Com sufixos personalizados
 local sufixos = {"Mil", "Mi", "Bi", "Tri"}
 local formatted = Framework:FormatNumber(1500, sufixos) -- Resultado: "1.5Mil"
-```
 
-### Price
-Formata preços com múltiplas moedas.
+💲 Price
 
-```lua
+Formate preços com múltiplas moedas e cores.
+
 local preco = Framework:Price({
     currencies = {
         {amount = 1500, symbol = "$", color = "rgb(255,215,0)"},
         {amount = 750, symbol = "💎", color = "rgb(0,191,255)"}
     },
     separator = " + "
-}) -- Retorn o texto formatado e com as cores
-```
+})
 
-### Distance
-Calcula a distância entre duas posições.
+📏 Distance
 
-```lua
+Calcule a distância entre dois objetos ou posições.
+
 local part1 = workspace.Part1
 local part2 = workspace.Part2
-local distancia = Framework:Distance(part1, part2) -- Retorna número
-```
+local distancia = Framework:Distance(part1, part2)
 
-### Humanoid
-Verifica o estado do Humanoid do jogador.
+🤖 Humanoid
 
-```lua
+Verifique o estado do Humanoid do jogador.
+
 local estaAndando = Framework:Humanoid("Walking") -- Retorna boolean
 local estaPulando = Framework:Humanoid("Jumping") -- Retorna boolean
-```
 
-### NetworkOwner
-Verifica se um objeto está dentro do alcance de network do jogador.
+🌐 NetworkOwner
 
-```lua
+Cheque se um objeto está sob controle de rede do jogador.
+
 local part = workspace.Part
 local temControle = Framework:NetworkOwner(part) -- Retorna boolean
-```
 
-### EquipTool e UnequipTool
-Gerencia ferramentas no inventário.
+⚔️ EquipTool e UnequipTool
 
-```lua
--- Equipar ferramenta
-Framework:EquipTool("Espada") -- Retorna funçao 
+Gerencie ferramentas no inventário.
 
--- Desequipar ferramenta
-Framework:UnequipTool("Espada") -- Retorna funçao
-```
+Framework:EquipTool("Espada")   -- Equipa a ferramenta
+Framework:UnequipTool("Espada") -- Desequipa a ferramenta
 
-### Rejoin
-Reconecta o jogador ao servidor.
+🔄 Rejoin
 
-```lua
-Framework:Rejoin() -- Retorna funçao de relogar
-```
+Reconecte-se ao servidor atual.
 
-### CreateWindow
-Cria uma janela de interface usando a biblioteca Fluent.
+Framework:Rejoin()
 
-```lua
+🖼️ CreateWindow
+
+Crie uma janela de interface utilizando a biblioteca Fluent.
+
 local window = Framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
-```
 
-## ⚖️ Propriedade e Direitos Autorais
+
+---
+
+⚖️ Direitos Autorais e Uso Restrito
 
 Copyright © 2024 Yan. Todos os direitos reservados.
 
-**AVISO DE USO RESTRITO**
-- Este framework é propriedade exclusiva de Yan
-- Uso e distribuição são permitidos apenas mediante autorização expressa do proprietário
-- A cópia, modificação ou distribuição não autorizada é estritamente proibida
-- O acesso ao código fonte não implica em direito de uso ou distribuição
+Termos de Uso:
 
-Desenvolvido com amor e carinho por Yan
+Este framework é de propriedade exclusiva de Yan.
 
-Para solicitar acesso ou tirar dúvidas, entre em contato com o proprietário.
+Qualquer uso ou distribuição sem autorização expressa é estritamente proibido.
+
+Acesso ao código fonte não concede permissão para cópia, modificação ou redistribuição.
+
+
+Desenvolvido com dedicação por Yan.
+Entre em contato para dúvidas ou solicitações de acesso.
+
+
+---
