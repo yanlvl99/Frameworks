@@ -123,18 +123,12 @@ Framework:Rejoin()
 ---
 
 ### **SimulateKeyPress**  
-**Descrição**: Simula o pressionamento de uma tecla por um tempo especificado.  
-
-**Sintaxe**:  
-```lua
-Framework:SimulateKeyPress(keyCode: Enum.KeyCode, duration: number)
-```  
+Simula o pressionamento de uma tecla por um tempo especificado.  
 
 **Parâmetros**:  
 - `keyCode` (obrigatório): A tecla que será simulada. Deve ser um valor de `Enum.KeyCode`.  
 - `duration` (opcional): A duração do pressionamento em segundos. O padrão é `0.1`.  
 
-**Exemplo**:  
 ```lua
 Framework:SimulateKeyPress(Enum.KeyCode.E)  
 -- Simula o pressionamento da tecla "E" por 0.1 segundos.
@@ -146,17 +140,11 @@ Framework:SimulateKeyPress(Enum.KeyCode.Space, 0.5)
 ---
 
 ### **SimulateMouseClick**  
-**Descrição**: Simula um clique do mouse em um botão específico.  
-
-**Sintaxe**:  
-```lua
-Framework:SimulateMouseClick(button: string)
-```  
+Simula um clique do mouse em um botão específico.  
 
 **Parâmetros**:  
 - `button` (opcional): O botão do mouse a ser clicado. Pode ser `"Left"` para botão esquerdo ou `"Right"` para botão direito. O padrão é `"Left"`.  
 
-**Exemplo**:  
 ```lua
 Framework:SimulateMouseClick()  
 -- Simula um clique com o botão esquerdo do mouse.
@@ -168,18 +156,12 @@ Framework:SimulateMouseClick("Right")
 ---
 
 ### **SimulateMouseScroll**  
-**Descrição**: Simula o movimento de rolagem do mouse em uma direção especificada e uma quantidade de passos.  
-
-**Sintaxe**:  
-```lua
-Framework:SimulateMouseScroll(direction: string, steps: number)
-```  
+Simula o movimento de rolagem do mouse em uma direção especificada e uma quantidade de passos.  
 
 **Parâmetros**:  
 - `direction` (opcional): A direção da rolagem. Pode ser `"Up"` (para cima) ou `"Down"` (para baixo). O padrão é `"Up"`.  
 - `steps` (opcional): O número de passos de rolagem. O padrão é `1`.  
 
-**Exemplo**:  
 ```lua
 Framework:SimulateMouseScroll()  
 -- Simula uma rolagem para cima com um passo.
