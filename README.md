@@ -1,137 +1,216 @@
-# Yan's Hub Framework v0.2
-Uma biblioteca de utilitários para Roblox que oferece diversas funções auxiliares para desenvolvimento de scripts.
+# Yan's Framework v0.1
+
+Uma biblioteca utilitária privada para Roblox com funções para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas e muito mais.
+
+⚠️ **AVISO: Este é um framework privado de uso restrito. Distribuição e uso não autorizado são estritamente proibidos.**
 
 ## 📥 Instalação
+
 ```lua
-loadstring(game:HttpGet("[URL_DO_SEU_RAW_GITHUB](https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua)"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua"))()
 local Framework = Framework.new()
 ```
 
-## ⚙️ Funcionalidades Principais
+## 🚀 Funcionalidades
 
-### Position(arg)
+### Flexibilidade e Facilidade
+Você pode facilmente adicionar mais funções ao Framework, e tambem utilizar funções ja existentes nessa função 
+
+```lua
+-- Criando nova função 
+function Framework:Printar(texto)
+    print(texto)
+end
+
+-- Criando função nova e utilizando função já existente
+function Framework:PrintarNumeroFormatado(numero)
+    print(self:FormatNumber(numero))
+end
+```
+
+### Position
 Obtém a posição Vector3 de diferentes tipos de objetos.
+
 ```lua
+-- Com BasePart
+local part = workspace.Part
 local position = Framework:Position(part) -- Retorna Vector3
-```
-Suporta:
-- BasePart
-- Model
-- Attachment
-- Humanoid
-- Vector3
-- CFrame
-- UDim2
-- Tables com propriedade Position
 
-### TextColor(text, color)
-Aplica cor ao texto usando formatação HTML.
-```lua
-local coloredText = Framework:TextColor("Texto", Color3.fromRGB(255, 0, 0))
+-- Com Vector3
+local vec = Vector3.new(0, 10, 0)
+local position = Framework:Position(vec) -- Retorna Vector3
+
+-- Com CFrame
+local cf = CFrame.new(0, 10, 0)
+local position = Framework:Position(cf) -- Retorna Vector3
+
+-- Com Model
+local model = workspace.Model
+local position = Framework:Position(model) -- Retorna Vector3 do PrimaryPart
 ```
 
-### FormatNumber(number)
-Formata números grandes com sufixos (K, M, B, T).
+
+### Teleport
+Teleporta o jogador para uma posição alvo, que pode ser um Model, Part, CFrame ou Position. A função formata automaticamente a posição para CFrame.
 ```lua
-local formatted = Framework:FormatNumber(1500) -- Retorna "1.5K"
+-- Exemplo de uso com Tween:
+local config = {
+    targetPos = workspace.Part, -- Posição alvo (pode ser Model, Part, CFrame ou Position)
+    RootPart = Player.Character.HumanoidRootPart, -- Parte raiz do jogador
+    Tween = true, -- Usar Tweening
+    MaxSpeed = 300, -- Velocidade máxima
+    MinSpeed = 1, -- Velocidade mínima
+    Speed = 250, -- Velocidade de Tweening
+    BypassDistance = 100, -- Distância para ignorar Tweening
+    NeedHumanoid = true, -- Verificar saúde do Humanoid
+    HasBodyVelocity = true -- Adicionar BodyVelocity
+}
+
+Framework:Teleport(config)
+
+-- Exemplo de uso sem Tween:
+local config = {
+    targetPos = Vector3.new(0, 10, 0), -- Posição alvo (pode ser Model, Part, CFrame ou Position)
+    RootPart = Player.Character.HumanoidRootPart, -- Parte raiz do jogador
+    Tween = false -- Não usar Tweening
+}
+
+Framework:Teleport(config)
+
 ```
 
-### Simulação de Input
-#### SimulateKeyPress(key, releaseTime)
+### TextColor
+Adiciona cor ao texto.
+
 ```lua
-Framework:SimulateKeyPress(Enum.KeyCode.Space, 0.1)
+local coloredText = Framework:TextColor("Olá Mundo", "rgb(255,0,0)") -- Retorn o texto colorido
 ```
 
-#### SimulateMouseClick(button)
+### FindMatchingItems
+Procura itens que correspondem às palavras-chave fornecidas.
+
 ```lua
-Framework:SimulateMouseClick("Left") -- ou "Right"
+-- Suponha que temos alguns objetos no workspace e no Player
+local exampleFolder = Instance.new("Folder", workspace)
+exampleFolder.Name = "ExampleFolder"
+
+local item1 = Instance.new("Part", exampleFolder)
+item1.Name = "Olá"
+
+local item2 = Instance.new("Part", exampleFolder)
+item2.Name = "Mundo"
+
+local item3 = Instance.new("Part", exampleFolder)
+item3.Name = "Lua"
+
+local parents = {exampleFolder, game.Players.LocalPlayer,workspace}
+
+-- Caso 1: Verificar se algum item contém as palavras-chave "Olá" ou "3"
+local result = Framework:FindMatchingItems(parents, false, "Olá", "3")
+print(result)  -- Isso imprimirá true, pois "Olá" está na tabela
+
+-- Caso 2: Retornar os itens que contêm as palavras-chave "Olá" ou "3"
+local foundItems = Framework:FindMatchingItems(parents, true, "Olá", "3")
+for _, item in ipairs(foundItems) do
+    print(item.Name)  -- Isso imprimirá "Olá"
+end
+
+-- Caso 3: Verificar se algum item contém a palavra-chave "Lua"
+local result2 = Framework:FindMatchingItems(parents, false, "Lua")
+print(result2)  -- Isso imprimirá true, pois "Lua" está na tabela
+
+-- Caso 4: Retornar os itens que contêm a palavra-chave "Lua"
+local foundItems2 = Framework:FindMatchingItems(parents, true, "Lua")
+for _, item in ipairs(foundItems2) do
+    print(item.Name)  -- Isso imprimirá "Lua"
+end
 ```
 
-#### SimulateMouseScroll(direction, amount)
+
+### FormatNumber
+Formata números grandes com sufixos.
+
 ```lua
-Framework:SimulateMouseScroll("Up", 1) -- ou "Down"
+local formatted = Framework:FormatNumber(1500) -- Resultado: "1.5K"
+local formatted = Framework:FormatNumber(1500000) -- Resultado: "1.5M"
+
+-- Com sufixos personalizados
+local sufixos = {"Mil", "Mi", "Bi", "Tri"}
+local formatted = Framework:FormatNumber(1500, sufixos) -- Resultado: "1.5Mil"
 ```
 
-### ContainsValue(table, ...)
-Verifica se uma tabela contém determinados valores.
-```lua
-local contains = Framework:ContainsValue({1, 2, 3}, 2, 4) -- Retorna true se encontrar qualquer valor
-```
+### Price
+Formata preços com múltiplas moedas.
 
-### FindMatchingItems(parents, returnItems, ...)
-Procura por itens que correspondam a palavras-chave específicas.
 ```lua
-local items = Framework:FindMatchingItems(workspace, true, "keyword")
-```
-
-### Teleport(config)
-Teleporta ou faz tween de um personagem para uma posição.
-```lua
-Framework:Teleport({
-    targetPos = Vector3.new(0, 0, 0),
-    RootPart = character.HumanoidRootPart,
-    Tween = true,
-    Speed = 300,
-    MaxSpeed = 500,
-    MinSpeed = 1,
-    BypassDistance = 1,
-    NeedHumanoid = true,
-    HasBodyVelocity = true
-})
-```
-
-### Price(options)
-Formata preços com diferentes moedas e cores.
-```lua
-local price = Framework:Price({
+local preco = Framework:Price({
     currencies = {
-        {amount = 1500, symbol = "$", color = "rgb(255,255,0)"},
-        {amount = 2000, symbol = "€", color = "rgb(0,255,0)"}
+        {amount = 1500, symbol = "$", color = "rgb(255,215,0)"},
+        {amount = 750, symbol = "💎", color = "rgb(0,191,255)"}
     },
-    separator = " e "
-})
+    separator = " + "
+}) -- Retorn o texto formatado e com as cores
 ```
 
-### Distance(a, b)
-Calcula a distância entre dois objetos/posições.
+### Distance
+Calcula a distância entre duas posições.
+
 ```lua
-local distance = Framework:Distance(part1, part2)
+local part1 = workspace.Part1
+local part2 = workspace.Part2
+local distancia = Framework:Distance(part1, part2) -- Retorna número
 ```
 
-### Humanoid(state)
-Verifica o estado atual do Humanoid do jogador.
+### Humanoid
+Verifica o estado do Humanoid do jogador.
+
 ```lua
-local isJumping = Framework:Humanoid("Jumping")
+local estaAndando = Framework:Humanoid("Walking") -- Retorna boolean
+local estaPulando = Framework:Humanoid("Jumping") -- Retorna boolean
 ```
 
-### NetworkOwner(part)
-Verifica se um BasePart está dentro do alcance de network do jogador.
+### NetworkOwner
+Verifica se um objeto está dentro do alcance de network do jogador.
+
 ```lua
-local hasNetworkOwnership = Framework:NetworkOwner(part)
+local part = workspace.Part
+local temControle = Framework:NetworkOwner(part) -- Retorna boolean
 ```
 
-### Equipamento de Ferramentas
+### ContainsValue
+Verifica se um valor está dentro de uma table
+
 ```lua
-Framework:EquipTool("ToolName")   -- Equipa uma ferramenta
-Framework:UnequipTool("ToolName") -- Desequipa uma ferramenta
+local valueTable = {"Olá", "Mundo", "Lua"} 
+local result = Framework:ContainsValue(valueTable, "Olá", "3") 
+print(result) -- Isso imprimirá true, pois "Olá" está na tabela
 ```
 
-### Rejoin()
+
+### EquipTool e UnequipTool
+Gerencia ferramentas no inventário.
+
+```lua
+-- Equipar ferramenta
+Framework:EquipTool("Espada") -- Retorna funçao 
+
+-- Desequipar ferramenta
+Framework:UnequipTool("Espada") -- Retorna funçao
+```
+
+### Rejoin
 Reconecta o jogador ao servidor.
+
 ```lua
-Framework:Rejoin()
+Framework:Rejoin() -- Retorna funçao de relogar
 ```
 
-### Interface Gráfica
+### CreateWindow
+Cria uma janela de interface usando a biblioteca Fluent.
+
 ```lua
-local window = Framework:CreateWindow("Nome do Jogo", Enum.KeyCode.LeftAlt)
+local window = Framework:CreateWindow("Meu Jogo", Enum.KeyCode.LeftAlt)
 ```
-
-## 🎨 Interface
-O Framework utiliza a biblioteca Fluent UI para criar interfaces gráficas modernas e responsivas.
-
-## ⚠️ Observações
-- Reporte bugs ou problemas na aba Issues
 
 ## ⚖️ Propriedade e Direitos Autorais
 
