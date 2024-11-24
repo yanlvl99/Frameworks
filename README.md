@@ -3,7 +3,8 @@ Uma biblioteca de utilitários para Roblox que oferece diversas funções auxili
 
 ## 📥 Instalação
 ```lua
-local Framework = loadstring(game:HttpGet("URL_DO_SEU_RAW_GITHUB"))()
+loadstring(game:HttpGet("[URL_DO_SEU_RAW_GITHUB](https://raw.githubusercontent.com/yanlvl99/Frameworks/refs/heads/main/base.lua)"))()
+local Framework = Framework.new()
 ```
 
 ## ⚙️ Funcionalidades Principais
