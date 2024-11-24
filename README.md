@@ -106,6 +106,16 @@ local part = workspace.Part
 local temControle = Framework:NetworkOwner(part) -- Retorna boolean
 ```
 
+### ContainsValue
+Verifica se um valor está dentro de uma table
+
+```lua
+local valueTable = {"Olá", "Mundo", "Lua"} 
+local result = Framework:ContainsValue(valueTable, "Olá", "3") 
+print(result) -- Isso imprimirá true, pois "Olá" está na tabela
+```
+
+
 ### EquipTool e UnequipTool
 Gerencia ferramentas no inventário.
 
