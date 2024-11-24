@@ -1,4 +1,4 @@
-# **Yan's Framework v0.1**
+# **Yan's Framework v0.2**
 
 Uma biblioteca utilitária privada para Roblox com uma vasta gama de funcionalidades para simplificar tarefas comuns no desenvolvimento de jogos. Este framework inclui ferramentas para manipulação de posições, formatação de texto e números, gerenciamento de ferramentas, teleporte de jogadores e mais.
 
